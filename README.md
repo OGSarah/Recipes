@@ -8,6 +8,7 @@
 - SwiftUI
 - SwiftData
 - Swift Testing
+- XCTest
 
 ## Features
 
