@@ -9,14 +9,14 @@
 - SwiftData
 
 ## Features
-- Create recipes with title, summary, servings, prep time, ingredients, and an icon
-- Validate required fields before saving
-- Browse recipes in a list with detail view
-- Search across titles, summaries, and ingredients
-- Sort by title, prep time, or servings (preference saved)
-- Delete recipes from the list
-- Empty states for no recipes or no matches
-- SwiftData persistence
+- Create recipes with title, summary, servings, prep time, ingredients, and an icon.
+- Validate required fields before saving.
+- Browse recipes in a list with detail view.
+- Search across titles, summaries, and ingredients.
+- Sort by title, prep time, or servings (preference saved).
+- Delete recipes from the list.
+- Empty states for no recipes or no matches.
+- SwiftData persistence.
 
 ## License
 Proprietary Software
