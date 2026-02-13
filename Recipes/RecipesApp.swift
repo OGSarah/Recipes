@@ -23,16 +23,15 @@ struct RecipesApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
         do {
-          let descriptor = FetchDescriptor<Recipe>()
-          let existing = try modelContainer.mainContext.fetch(descriptor)
-          for object in existing {
-            modelContainer.mainContext.delete(object)
-          }
+            let descriptor = FetchDescriptor<Recipe>()
+            let existing = try modelContainer.mainContext.fetch(descriptor)
+            if existing.isEmpty {
+                for recipe in Recipe.sampleRecipeData {
+                    modelContainer.mainContext.insert(recipe)
+                }
+            }
         } catch {
-          print("Failed to clear existing Recipe data: \(error)")
-        }
-        for recipe in Recipe.sampleRecipeData {
-          modelContainer.mainContext.insert(recipe)
+            print("Failed to seed Recipe data: \(error)")
         }
         return modelContainer
     }()
