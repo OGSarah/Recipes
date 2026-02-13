@@ -1,9 +1,7 @@
 <div align="center">
-  <img src="" width="300" style="border: 3px solid white; border-radius: 15px; vertical-align: middle; margin-right: 20px;">
+  <img src="Screenshots/AppIcon.png" width="300" style="border: 3px solid white; border-radius: 15px; vertical-align: middle; margin-right: 20px;">
   <h1 style="display: inline-block; vertical-align: middle;">Recipes</h1>
 </div>
-
-**Recipes**
 
 # Screenshots
 <div align="center">
