@@ -3,34 +3,10 @@
   <h1 style="display: inline-block; vertical-align: middle;">Recipes</h1>
 </div>
 
-# Screenshots
-<div align="center">
-  <div style="border: 2px solid white; border-radius: 10px;">
-    <img width="20%" src="">
-    <img width="20%" src="">
-    <img width="20%" src="">
-    <img width="20%" src="">
-  </div>
-</div>
-
-<br><br> 
-
-<div align="center">
-  <div style="border: 2px solid white; border-radius: 10px;">
-    <img width="20%" src="">
-    <img width="20%" src="">
-    <img width="20%" src="">
-    <img width="20%" src="">
-  </div>
-</div>
-
-<br><br> 
-
 ## Language, Frameworks, & Tools
 - iOS 26
 - SwiftUI
 - SwiftData
-- SwiftLint
 - Swift Testing
 
 ## Features
