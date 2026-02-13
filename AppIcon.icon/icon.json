@@ -1,0 +1,73 @@
+{
+  "fill" : {
+    "linear-gradient" : [
+      "srgb:1.00000,0.83235,0.47321,1.00000",
+      "srgb:0.57875,0.32152,0.00000,1.00000"
+    ],
+    "orientation" : {
+      "start" : {
+        "x" : 0.5,
+        "y" : 0
+      },
+      "stop" : {
+        "x" : 0.5,
+        "y" : 0.7
+      }
+    }
+  },
+  "groups" : [
+    {
+      "blend-mode" : "hard-light",
+      "layers" : [
+        {
+          "image-name" : "steam.png",
+          "name" : "steam",
+          "position" : {
+            "scale" : 1.5,
+            "translation-in-points" : [
+              16.3359375,
+              -233.1796875
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 1
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
+        {
+          "image-name" : "pie.png",
+          "name" : "pie",
+          "position" : {
+            "scale" : 2.5,
+            "translation-in-points" : [
+              0,
+              113
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 1
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
