@@ -7,8 +7,6 @@
 - iOS 26
 - SwiftUI
 - SwiftData
-- Swift Testing
-- XCTest
 
 ## Features
 
