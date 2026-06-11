@@ -34,6 +34,13 @@ struct EmptyStateView: View {
     }
 }
 
-#Preview {
+// MARK: Previews
+#Preview("Light") {
     EmptyStateView()
+        .preferredColorScheme(.light)
+}
+
+#Preview("Dark") {
+    EmptyStateView()
+        .preferredColorScheme(.light)
 }

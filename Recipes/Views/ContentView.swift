@@ -195,13 +195,13 @@ private enum SortOption: String, CaseIterable, Identifiable {
 }
 
 // MARK: Previews
-#Preview("Light Mode") {
+#Preview("Light") {
     ContentView()
         .modelContainer(for: Recipe.self, inMemory: true)
         .preferredColorScheme(.light)
 }
 
-#Preview("Dark Mode") {
+#Preview("Dark") {
     ContentView()
         .modelContainer(for: Recipe.self, inMemory: true)
         .preferredColorScheme(.dark)

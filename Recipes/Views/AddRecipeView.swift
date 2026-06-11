@@ -196,9 +196,19 @@ struct AddRecipeView: View {
     }
 }
 
-#Preview {
+// MARK: Previews
+#Preview("Light") {
     NavigationStack {
         AddRecipeView()
             .modelContainer(for: Recipe.self, inMemory: true)
+            .preferredColorScheme(.light)
+    }
+}
+
+#Preview("Dark") {
+    NavigationStack {
+        AddRecipeView()
+            .modelContainer(for: Recipe.self, inMemory: true)
+            .preferredColorScheme(.dark)
     }
 }

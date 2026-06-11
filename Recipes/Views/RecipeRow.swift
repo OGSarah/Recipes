@@ -36,6 +36,13 @@ struct RecipeRow: View {
     }
 }
 
-#Preview {
+// MARK: Previews
+#Preview("Light") {
     RecipeRow(recipe: Recipe.sampleRecipeData[0])
+        .preferredColorScheme(.light)
+}
+
+#Preview("Dark") {
+    RecipeRow(recipe: Recipe.sampleRecipeData[0])
+        .preferredColorScheme(.dark)
 }
