@@ -1,4 +1,7 @@
 {
+  "features" : [
+    "refractivity"
+  ],
   "fill" : {
     "linear-gradient" : [
       "srgb:1.00000,0.83235,0.47321,1.00000",
@@ -31,9 +34,14 @@
           }
         }
       ],
+      "refractivity" : {
+        "depth" : 1,
+        "enabled" : true,
+        "strength" : 0.1315625
+      },
       "shadow" : {
         "kind" : "layer-color",
-        "opacity" : 1
+        "opacity" : 2
       },
       "translucency" : {
         "enabled" : true,
@@ -54,6 +62,11 @@
           }
         }
       ],
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : true,
+        "strength" : -0.016953125
+      },
       "shadow" : {
         "kind" : "layer-color",
         "opacity" : 1
