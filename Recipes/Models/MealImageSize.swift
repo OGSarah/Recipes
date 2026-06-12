@@ -30,8 +30,8 @@ import Foundation
 /// A resized-thumbnail variant served by TheMealDB.
 ///
 /// TheMealDB exposes smaller renditions of a meal thumbnail by appending
-/// `/small.jpg`, `/medium.jpg`, etc. to the base image path — useful for keeping list
-/// scrolling light while reserving the full image for the detail hero.
+/// `/small`, `/medium`, etc. to the *full* image URL (extension included) — useful for
+/// keeping list scrolling light while reserving the full image for the detail hero.
 nonisolated enum MealImageSize: String, Sendable, CaseIterable {
     case small
     case medium
@@ -42,8 +42,11 @@ nonisolated enum MealImageSize: String, Sendable, CaseIterable {
 extension URL {
     /// Returns the resized variant of a TheMealDB meal thumbnail.
     ///
-    /// Given `.../meals/abc123.jpg`, `.mealThumbnail(.small)` yields `.../meals/abc123/small.jpg`.
+    /// Given `.../meals/abc123.jpg`, `.mealThumbnail(.small)` yields `.../meals/abc123.jpg/small`.
+    /// The size is appended as a path component to the full URL — the `.jpg` extension is kept,
+    /// since TheMealDB serves the rendition at `<image>.jpg/<size>` (the form that omits the
+    /// extension, `<image>/<size>.jpg`, 404s).
     nonisolated func mealThumbnail(_ size: MealImageSize) -> URL {
-        deletingPathExtension().appendingPathComponent("\(size.rawValue).jpg")
+        appendingPathComponent(size.rawValue)
     }
 }
