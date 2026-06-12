@@ -85,7 +85,13 @@ struct BrowseView: View {
     }
 
     private var categoryGrid: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 16)], spacing: 16) {
+        LazyVGrid(
+            columns: [
+                GridItem(.flexible(), spacing: 16),
+                GridItem(.flexible(), spacing: 16)
+            ],
+            spacing: 16
+        ) {
             ForEach(model.categories) { category in
                 NavigationLink(value: MealListViewModel.Filter.category(category.name)) {
                     CategoryCard(category: category)

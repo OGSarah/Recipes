@@ -38,27 +38,33 @@ struct RemoteImage: View {
     var placeholderSymbol: String = "fork.knife"
 
     var body: some View {
-        Group {
-            if let url {
-                AsyncImage(
-                    request: URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
-                ) { phase in
-                    switch phase {
-                        case .success(let image):
-                            image.resizable().scaledToFill()
-                        case .failure:
-                            placeholder
-                        case .empty:
-                            loading
-                        @unknown default:
-                            placeholder
+        // Fill the *proposed* frame via an overlay rather than letting the image size us.
+        // A `scaledToFill` image reports its aspect-scaled width as its layout width, which
+        // would force any flexible container (a grid column, an HStack share) wider than its
+        // share. Anchoring the layout to `Color.clear` keeps the view exactly the size it is
+        // offered, and the image fills and clips within those bounds.
+        Color.clear
+            .overlay {
+                if let url {
+                    AsyncImage(
+                        request: URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
+                    ) { phase in
+                        switch phase {
+                            case .success(let image):
+                                image.resizable().scaledToFill()
+                            case .failure:
+                                placeholder
+                            case .empty:
+                                loading
+                            @unknown default:
+                                placeholder
+                        }
                     }
+                } else {
+                    placeholder
                 }
-            } else {
-                placeholder
             }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
 
     private var placeholder: some View {

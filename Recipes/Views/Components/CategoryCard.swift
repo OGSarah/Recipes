@@ -41,11 +41,18 @@ struct CategoryCard: View {
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(Color.appIconBrown)
                 .lineLimit(1)
+                .truncationMode(.tail)
         }
-        .padding(8)
+        .padding(10)
+        .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.appIconCream.opacity(0.65))
+                .fill(Color.appIconCream)
+                .shadow(color: Color.appIconBrown.opacity(0.15), radius: 3, y: 1)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .strokeBorder(Color.appIconBrown.opacity(0.08), lineWidth: 1)
         )
         .accessibilityElement(children: .combine)
     }
