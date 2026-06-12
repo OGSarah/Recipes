@@ -8,8 +8,6 @@
 
 A Swift iOS recipe browser built with SwiftUI on top of [TheMealDB](https://www.themealdb.com) public API. Browse recipes by category and cuisine, search by name, read full recipes with ingredients and instructions, and save favorites locally for offline cooking.
 
-> **CI note:** The suite is green locally on the Xcode 27 / iOS 27 beta toolchain. The GitHub Actions runners don't yet ship that toolchain, so the badges will stay red until they do. This is a runner-availability gap, not a test failure.
-
 
 ## Architecture
 
