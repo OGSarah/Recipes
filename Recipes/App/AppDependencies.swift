@@ -40,12 +40,6 @@ struct AppDependencies {
     /// The session whose `URLCache` backs `AsyncImage` thumbnail caching across the app.
     let imageSession: URLSession
 
-    init(recipeProvider: RecipeProviding, favoritesStore: FavoritesStoring, imageSession: URLSession) {
-        self.recipeProvider = recipeProvider
-        self.favoritesStore = favoritesStore
-        self.imageSession = imageSession
-    }
-
     /// Builds the production graph: the live MealDB client, a SwiftData-backed favorites
     /// store, and an image session with a generous memory/disk cache.
     static func live() -> AppDependencies {

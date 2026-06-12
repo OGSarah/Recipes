@@ -86,6 +86,8 @@ struct RecipeDetailView: View {
             .frame(maxWidth: .infinity)
             .frame(height: 240)
             .clipShape(RoundedRectangle(cornerRadius: 20))
+            .accessibilityElement()
+            .accessibilityLabel("Photo of \(detail.name)")
 
         HStack(spacing: 8) {
             if let category = detail.category { chip(category, systemImage: "tag") }
@@ -146,6 +148,7 @@ struct RecipeDetailView: View {
             .font(.headline)
             .foregroundStyle(Color.appIconOrange)
             .padding(.top, 8)
+            .accessibilityAddTraits(.isHeader)
     }
 }
 

@@ -110,6 +110,7 @@ struct BrowseView: View {
                     HStack {
                         Image(systemName: "globe")
                             .foregroundStyle(Color.appIconOrange)
+                            .accessibilityHidden(true)
                         Text(area.name)
                             .font(.headline)
                             .foregroundStyle(Color.appIconBrown)
@@ -117,6 +118,7 @@ struct BrowseView: View {
                         Image(systemName: "chevron.right")
                             .font(.footnote)
                             .foregroundStyle(Color.appIconBrown.opacity(0.4))
+                            .accessibilityHidden(true)
                     }
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 16).fill(Color.appIconCream.opacity(0.7)))

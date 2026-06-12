@@ -52,3 +52,7 @@ identifier_name:
 
 force_unwrapping:
   severity: warning
+
+# The codebase indents `case` statements one level inside `switch`.
+switch_case_alignment:
+  indented_cases: true

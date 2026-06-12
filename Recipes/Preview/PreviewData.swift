@@ -69,12 +69,9 @@ extension MealDetail {
 
 extension MealSummary {
     nonisolated static let previewList = [
-        MealSummary(id: "52772", name: "Spaghetti Carbonara",
-                    thumbnailURL: URL(string: "https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg")),
-        MealSummary(id: "52773", name: "Beef Wellington",
-                    thumbnailURL: URL(string: "https://www.themealdb.com/images/media/meals/vvpprx1487325699.jpg")),
-        MealSummary(id: "52774", name: "Chicken Tikka Masala",
-                    thumbnailURL: URL(string: "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg"))
+        MealSummary(id: "52772", name: "Spaghetti Carbonara", thumbnailURL: URL(string: "https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg")),
+        MealSummary(id: "52773", name: "Beef Wellington", thumbnailURL: URL(string: "https://www.themealdb.com/images/media/meals/vvpprx1487325699.jpg")),
+        MealSummary(id: "52774", name: "Chicken Tikka Masala", thumbnailURL: URL(string: "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg"))
     ]
 }
 
@@ -88,12 +85,18 @@ extension MealCategory {
 
     nonisolated static let previewList = [
         MealCategory.preview,
-        MealCategory(id: "2", name: "Seafood",
-                     thumbnailURL: URL(string: "https://www.themealdb.com/images/category/seafood.png"),
-                     description: "Seafood dishes from around the world."),
-        MealCategory(id: "3", name: "Vegetarian",
-                     thumbnailURL: URL(string: "https://www.themealdb.com/images/category/vegetarian.png"),
-                     description: "Meat-free meals.")
+        MealCategory(
+            id: "2",
+            name: "Seafood",
+            thumbnailURL: URL(string: "https://www.themealdb.com/images/category/seafood.png"),
+            description: "Seafood dishes from around the world."
+        ),
+        MealCategory(
+            id: "3",
+            name: "Vegetarian",
+            thumbnailURL: URL(string: "https://www.themealdb.com/images/category/vegetarian.png"),
+            description: "Meat-free meals."
+        )
     ]
 }
 

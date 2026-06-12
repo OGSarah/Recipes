@@ -36,6 +36,7 @@ struct IngredientRow: View {
             Image(systemName: "circle.fill")
                 .font(.system(size: 6))
                 .foregroundStyle(Color.appIconLeaf)
+                .accessibilityHidden(true)
 
             Text(ingredient.name)
                 .font(.body)

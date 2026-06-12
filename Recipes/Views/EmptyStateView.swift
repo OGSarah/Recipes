@@ -56,6 +56,7 @@ struct EmptyStateView: View {
                 Image(systemName: systemImage)
                     .font(.system(size: 42))
                     .foregroundStyle(Color.appIconOrange)
+                    .accessibilityHidden(true)
             }
 
             Text(title)

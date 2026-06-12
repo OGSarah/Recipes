@@ -43,10 +43,10 @@ nonisolated enum MealDBEndpoint: Sendable, Equatable {
 
     /// The free V1 test key. Production/App Store use would require a paid supporter key.
     private static let apiKey = "1"
-    private static let base = URL(string: "https://www.themealdb.com/api/json/v1/\(apiKey)/")!
+    private static let baseURLString = "https://www.themealdb.com/api/json/v1/\(apiKey)/"
 
     var url: URL? {
-        guard var components = URLComponents(url: Self.base, resolvingAgainstBaseURL: true) else {
+        guard var components = URLComponents(string: Self.baseURLString) else {
             return nil
         }
         switch self {

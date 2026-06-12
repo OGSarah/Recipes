@@ -69,6 +69,19 @@ This project uses TheMealDB's **free test key `1`** strictly for development and
 - **Resilient networking**: typed errors, off-main decoding, structured-concurrency cancellation, and retryable error states.
 - **Cached images**: `AsyncImage(request:)` over a shared `URLCache`, with resized TheMealDB thumbnail variants for lists.
 - **Modern SwiftUI**: `TabView` + per-tab `NavigationStack`, value-based navigation, adaptive dark/light previews, and accessibility identifiers throughout.
+- **Accessibility**: VoiceOver labels and traits throughout, grouped rows and cards, hidden decorative glyphs, section headers, and a VoiceOver delete action for favorites.
+
+
+## Accessibility
+
+The app is built to work with VoiceOver:
+
+- Every interactive control has a spoken label. The favorite button announces "Add to favorites" or "Remove from favorites" based on its state, and the external links read as "Watch on YouTube" and "View Original Recipe".
+- Meal rows, ingredient rows, and category cards are each grouped into a single element, so VoiceOver reads "name, subtitle" in one swipe instead of fragmenting across the thumbnail and labels.
+- The recipe detail hero image carries a "Photo of <recipe>" label, and the section headers expose the Header trait so the headings rotor can jump between Ingredients and Instructions.
+- Purely decorative glyphs (ingredient bullets, the globe and chevron on cuisine rows, empty-state symbols) are hidden from VoiceOver to cut announcement noise.
+- Swipe-to-delete on Favorites is also exposed as a VoiceOver custom action ("Delete"), since swipe gestures are not otherwise reachable by assistive technologies.
+- Stable accessibility identifiers back the UI test suite, so a renamed identifier breaks the tests at compile time rather than silently.
 
 
 ## Screenshots

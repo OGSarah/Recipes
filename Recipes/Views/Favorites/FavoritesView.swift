@@ -69,6 +69,9 @@ struct FavoritesView: View {
                     NavigationLink(value: detail) {
                         MealRow(detail: detail)
                     }
+                    .accessibilityAction(named: "Delete") {
+                        Task { await model.remove(detail) }
+                    }
                 }
                 .onDelete { offsets in
                     Task { await model.remove(at: offsets) }
