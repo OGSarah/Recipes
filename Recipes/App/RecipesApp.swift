@@ -1,5 +1,5 @@
 //
-// Color+Extensions.swift
+// RecipesApp.swift
 // Recipes
 //
 // MIT License
@@ -27,11 +27,29 @@
 
 import SwiftUI
 
-extension Color {
-    static let appIconGold = Color(#colorLiteral(red: 0.88, green: 0.70, blue: 0.30, alpha: 1))
-    static let appIconAmber = Color(#colorLiteral(red: 0.95, green: 0.78, blue: 0.43, alpha: 1))
-    static let appIconOrange = Color(#colorLiteral(red: 0.80, green: 0.45, blue: 0.16, alpha: 1))
-    static let appIconBrown = Color(#colorLiteral(red: 0.38, green: 0.20, blue: 0.08, alpha: 1))
-    static let appIconCream = Color(#colorLiteral(red: 0.97, green: 0.90, blue: 0.74, alpha: 1))
-    static let appIconLeaf = Color(#colorLiteral(red: 0.34, green: 0.58, blue: 0.21, alpha: 1))
+/// The composition root. Builds the live dependency graph once and hands it to the UI;
+/// SwiftData and `URLSession` stay encapsulated behind the injected services.
+@main
+struct RecipesApp: App {
+    @State private var dependencies = RecipesApp.makeDependencies()
+
+    var body: some Scene {
+        WindowGroup {
+            RootTabView(dependencies: dependencies)
+        }
+    }
+
+    /// Selects the dependency graph for this launch. UI tests pass `-uitest-stub` to run
+    /// hermetically against mocked services; when the app is merely hosting a unit-test
+    /// bundle, it also uses the in-memory graph so it never touches the network or disk.
+    private static func makeDependencies() -> AppDependencies {
+        #if DEBUG
+        let process = ProcessInfo.processInfo
+        let isRunningUnitTests = process.environment["XCTestConfigurationFilePath"] != nil
+        if isRunningUnitTests || process.arguments.contains("-uitest-stub") {
+            return .preview()
+        }
+        #endif
+        return .live()
+    }
 }

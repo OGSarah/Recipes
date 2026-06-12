@@ -1,5 +1,5 @@
 //
-// Color+Extensions.swift
+// RootTabView.swift
 // Recipes
 //
 // MIT License
@@ -27,11 +27,38 @@
 
 import SwiftUI
 
-extension Color {
-    static let appIconGold = Color(#colorLiteral(red: 0.88, green: 0.70, blue: 0.30, alpha: 1))
-    static let appIconAmber = Color(#colorLiteral(red: 0.95, green: 0.78, blue: 0.43, alpha: 1))
-    static let appIconOrange = Color(#colorLiteral(red: 0.80, green: 0.45, blue: 0.16, alpha: 1))
-    static let appIconBrown = Color(#colorLiteral(red: 0.38, green: 0.20, blue: 0.08, alpha: 1))
-    static let appIconCream = Color(#colorLiteral(red: 0.97, green: 0.90, blue: 0.74, alpha: 1))
-    static let appIconLeaf = Color(#colorLiteral(red: 0.34, green: 0.58, blue: 0.21, alpha: 1))
+/// The app shell: a three-tab layout (Browse / Search / Favorites), each its own
+/// navigation stack. Installs the shared image-caching `URLSession` for every `AsyncImage`
+/// in the subtree.
+struct RootTabView: View {
+    let dependencies: AppDependencies
+
+    var body: some View {
+        TabView {
+            Tab("Browse", systemImage: "square.grid.2x2") {
+                BrowseView(dependencies: dependencies)
+            }
+
+            Tab("Search", systemImage: "magnifyingglass") {
+                SearchView(dependencies: dependencies)
+            }
+
+            Tab("Favorites", systemImage: "heart") {
+                FavoritesView(dependencies: dependencies)
+            }
+        }
+        .tint(Color.appIconOrange)
+        .asyncImageURLSession(dependencies.imageSession)
+    }
+}
+
+// MARK: Previews
+#Preview("Light") {
+    RootTabView(dependencies: .preview())
+        .preferredColorScheme(.light)
+}
+
+#Preview("Dark") {
+    RootTabView(dependencies: .preview())
+        .preferredColorScheme(.dark)
 }

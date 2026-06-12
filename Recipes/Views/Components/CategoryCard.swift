@@ -1,5 +1,5 @@
 //
-// Color+Extensions.swift
+// CategoryCard.swift
 // Recipes
 //
 // MIT License
@@ -27,11 +27,41 @@
 
 import SwiftUI
 
-extension Color {
-    static let appIconGold = Color(#colorLiteral(red: 0.88, green: 0.70, blue: 0.30, alpha: 1))
-    static let appIconAmber = Color(#colorLiteral(red: 0.95, green: 0.78, blue: 0.43, alpha: 1))
-    static let appIconOrange = Color(#colorLiteral(red: 0.80, green: 0.45, blue: 0.16, alpha: 1))
-    static let appIconBrown = Color(#colorLiteral(red: 0.38, green: 0.20, blue: 0.08, alpha: 1))
-    static let appIconCream = Color(#colorLiteral(red: 0.97, green: 0.90, blue: 0.74, alpha: 1))
-    static let appIconLeaf = Color(#colorLiteral(red: 0.34, green: 0.58, blue: 0.21, alpha: 1))
+/// A grid tile for a meal category, showing its artwork and name.
+struct CategoryCard: View {
+    let category: MealCategory
+
+    var body: some View {
+        VStack(spacing: 8) {
+            RemoteImage(url: category.thumbnailURL, cornerRadius: 16, placeholderSymbol: "square.grid.2x2")
+                .frame(height: 110)
+                .frame(maxWidth: .infinity)
+
+            Text(category.name)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Color.appIconBrown)
+                .lineLimit(1)
+        }
+        .padding(8)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.appIconCream.opacity(0.65))
+        )
+        .accessibilityElement(children: .combine)
+    }
+}
+
+// MARK: Previews
+#Preview("Light") {
+    CategoryCard(category: .preview)
+        .frame(width: 170)
+        .padding()
+        .preferredColorScheme(.light)
+}
+
+#Preview("Dark") {
+    CategoryCard(category: .preview)
+        .frame(width: 170)
+        .padding()
+        .preferredColorScheme(.dark)
 }

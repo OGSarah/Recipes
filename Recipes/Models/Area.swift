@@ -1,5 +1,5 @@
 //
-// Color+Extensions.swift
+// Area.swift
 // Recipes
 //
 // MIT License
@@ -25,13 +25,18 @@
 // SOFTWARE.
 //
 
-import SwiftUI
+import Foundation
 
-extension Color {
-    static let appIconGold = Color(#colorLiteral(red: 0.88, green: 0.70, blue: 0.30, alpha: 1))
-    static let appIconAmber = Color(#colorLiteral(red: 0.95, green: 0.78, blue: 0.43, alpha: 1))
-    static let appIconOrange = Color(#colorLiteral(red: 0.80, green: 0.45, blue: 0.16, alpha: 1))
-    static let appIconBrown = Color(#colorLiteral(red: 0.38, green: 0.20, blue: 0.08, alpha: 1))
-    static let appIconCream = Color(#colorLiteral(red: 0.97, green: 0.90, blue: 0.74, alpha: 1))
-    static let appIconLeaf = Color(#colorLiteral(red: 0.34, green: 0.58, blue: 0.21, alpha: 1))
+/// A cuisine region from `list.php?a=list` (e.g. Italian, Japanese, Canadian).
+nonisolated struct Area: Identifiable, Hashable, Sendable, Decodable {
+    let name: String
+    var id: String { name }
+
+    init(name: String) {
+        self.name = name
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case name = "strArea"
+    }
 }

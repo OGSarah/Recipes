@@ -1,5 +1,5 @@
 //
-// Color+Extensions.swift
+// MealImageSize.swift
 // Recipes
 //
 // MIT License
@@ -25,13 +25,25 @@
 // SOFTWARE.
 //
 
-import SwiftUI
+import Foundation
 
-extension Color {
-    static let appIconGold = Color(#colorLiteral(red: 0.88, green: 0.70, blue: 0.30, alpha: 1))
-    static let appIconAmber = Color(#colorLiteral(red: 0.95, green: 0.78, blue: 0.43, alpha: 1))
-    static let appIconOrange = Color(#colorLiteral(red: 0.80, green: 0.45, blue: 0.16, alpha: 1))
-    static let appIconBrown = Color(#colorLiteral(red: 0.38, green: 0.20, blue: 0.08, alpha: 1))
-    static let appIconCream = Color(#colorLiteral(red: 0.97, green: 0.90, blue: 0.74, alpha: 1))
-    static let appIconLeaf = Color(#colorLiteral(red: 0.34, green: 0.58, blue: 0.21, alpha: 1))
+/// A resized-thumbnail variant served by TheMealDB.
+///
+/// TheMealDB exposes smaller renditions of a meal thumbnail by appending
+/// `/small.jpg`, `/medium.jpg`, etc. to the base image path — useful for keeping list
+/// scrolling light while reserving the full image for the detail hero.
+nonisolated enum MealImageSize: String, Sendable, CaseIterable {
+    case small
+    case medium
+    case large
+    case preview
+}
+
+extension URL {
+    /// Returns the resized variant of a TheMealDB meal thumbnail.
+    ///
+    /// Given `.../meals/abc123.jpg`, `.mealThumbnail(.small)` yields `.../meals/abc123/small.jpg`.
+    nonisolated func mealThumbnail(_ size: MealImageSize) -> URL {
+        deletingPathExtension().appendingPathComponent("\(size.rawValue).jpg")
+    }
 }

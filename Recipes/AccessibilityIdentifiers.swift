@@ -1,5 +1,5 @@
 //
-// Color+Extensions.swift
+// AccessibilityIdentifiers.swift
 // Recipes
 //
 // MIT License
@@ -25,13 +25,32 @@
 // SOFTWARE.
 //
 
-import SwiftUI
+import Foundation
 
-extension Color {
-    static let appIconGold = Color(#colorLiteral(red: 0.88, green: 0.70, blue: 0.30, alpha: 1))
-    static let appIconAmber = Color(#colorLiteral(red: 0.95, green: 0.78, blue: 0.43, alpha: 1))
-    static let appIconOrange = Color(#colorLiteral(red: 0.80, green: 0.45, blue: 0.16, alpha: 1))
-    static let appIconBrown = Color(#colorLiteral(red: 0.38, green: 0.20, blue: 0.08, alpha: 1))
-    static let appIconCream = Color(#colorLiteral(red: 0.97, green: 0.90, blue: 0.74, alpha: 1))
-    static let appIconLeaf = Color(#colorLiteral(red: 0.34, green: 0.58, blue: 0.21, alpha: 1))
+/// Stable accessibility identifiers shared by the app's views and its UI test suite.
+///
+/// Keeping them in one namespace (compiled into both targets) means a renamed identifier
+/// is a compile error in the tests rather than a silent runtime miss.
+enum AccessibilityID {
+    enum Browse {
+        static let modePicker = "browse.modePicker"
+        static func categoryCell(_ name: String) -> String { "browse.category.\(name)" }
+        static func areaCell(_ name: String) -> String { "browse.area.\(name)" }
+    }
+
+    enum Meal {
+        static func row(_ id: String) -> String { "meal.row.\(id)" }
+    }
+
+    enum Detail {
+        static let title = "detail.title"
+        static let favoriteButton = "detail.favorite.button"
+        static let youtubeLink = "detail.youtube.link"
+        static let sourceLink = "detail.source.link"
+    }
+
+    enum StateView {
+        static let empty = "state.empty"
+        static let retry = "state.error.retry"
+    }
 }
