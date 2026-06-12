@@ -65,7 +65,6 @@ struct RecipeDetailView: View {
         }
         .background(AppBackground())
         .navigationTitle(model.title)
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -84,8 +83,9 @@ struct RecipeDetailView: View {
 
     @ViewBuilder private func detailContent(_ detail: MealDetail) -> some View {
         RemoteImage(url: detail.thumbnailURL, cornerRadius: 20)
-            .frame(height: 240)
             .frame(maxWidth: .infinity)
+            .frame(height: 240)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
 
         HStack(spacing: 8) {
             if let category = detail.category { chip(category, systemImage: "tag") }
