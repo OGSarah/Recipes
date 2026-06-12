@@ -34,9 +34,15 @@ import SwiftData
 /// `FavoriteRecipe` ⇄ `MealDetail` at the boundary so no `@Model` object ever escapes.
 @MainActor
 final class SwiftDataFavoritesStore: FavoritesStoring {
+    // The container must be retained for the store's lifetime. `ModelContext` does not keep its
+    // `ModelContainer` alive strongly, so holding only `mainContext` lets the container deallocate
+    // once the caller's local reference goes away — after which the executor's weak back-reference
+    // to the container is nil and the next `fetch` traps (EXC_BREAKPOINT) deep inside SwiftData.
+    private let modelContainer: ModelContainer
     private let modelContext: ModelContext
 
     init(container: ModelContainer) {
+        modelContainer = container
         modelContext = container.mainContext
     }
 
