@@ -39,12 +39,12 @@ struct RootTabView: View {
                 BrowseView(dependencies: dependencies)
             }
 
-            Tab("Search", systemImage: "magnifyingglass") {
-                SearchView(dependencies: dependencies)
-            }
-
             Tab("Favorites", systemImage: "heart") {
                 FavoritesView(dependencies: dependencies)
+            }
+
+            Tab("Search", systemImage: "magnifyingglass", role: .prominent) {
+                SearchView(dependencies: dependencies)
             }
         }
         .tint(Color.appIconOrange)
