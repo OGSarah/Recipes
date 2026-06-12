@@ -27,15 +27,12 @@
 
 import SwiftUI
 
-/// The warm, app-wide gradient backdrop, derived from the app icon palette.
+/// The app-wide backdrop. Uses the standard system grouped background so that
+/// grouped content and cards read clearly in both light and dark mode.
 struct AppBackground: View {
     var body: some View {
-        LinearGradient(
-            colors: [Color.appIconCream, Color.appIconAmber.opacity(0.35)],
-            startPoint: .top,
-            endPoint: .bottom
-        )
-        .ignoresSafeArea()
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
     }
 }
 

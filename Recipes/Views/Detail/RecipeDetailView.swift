@@ -87,11 +87,6 @@ struct RecipeDetailView: View {
             .frame(height: 240)
             .frame(maxWidth: .infinity)
 
-        Text(detail.name)
-            .font(.title.bold())
-            .foregroundStyle(Color.appIconBrown)
-            .accessibilityIdentifier(AccessibilityID.Detail.title)
-
         HStack(spacing: 8) {
             if let category = detail.category { chip(category, systemImage: "tag") }
             if let area = detail.area { chip(area, systemImage: "globe") }
